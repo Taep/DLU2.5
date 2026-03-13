@@ -13,6 +13,7 @@ namespace PlanetDefense.Planet
 
         [Header("자전")]
         [SerializeField] private float rotationSpeed = 10f;
+        [SerializeField] private Vector3 rotationAxis = new Vector3(0.3f, 1f, 0.2f);
 
         public float MaxHP => maxHP;
         public float CurrentHP => currentHP;
@@ -41,7 +42,7 @@ namespace PlanetDefense.Planet
 
         private void Update()
         {
-            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.Self);
+            transform.Rotate(rotationAxis.normalized, rotationSpeed * Time.deltaTime, Space.Self);
         }
 
         public void TakeDamage(float damage)
